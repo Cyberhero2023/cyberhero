@@ -1,0 +1,16 @@
+.mainframe {
+    width: 10vw;
+	height: 10vw;
+	background: url(/servehappy.svg) no-repeat;
+	background-color: rgba(0, 0, 0, 0);
+	background-position-x: 0%;
+	background-position-y: 0%;
+	background-size: auto;
+	background-position-x: 0%;
+	background-position-y: 0%;
+	background-size: auto;
+	border-radius: 50%;
+	background-size: 65%;
+	background-position: center;
+	background-color: white;
+}
