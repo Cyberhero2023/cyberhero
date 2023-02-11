@@ -2,11 +2,13 @@ import styles from "@/styles/Bug.module.css";
 import { useEffect, useRef, useState } from "react";
 
 type BugProps = {
+	health: number;
+	setHealth: (health: number) => void;
 	/** Position is a number between 0 and 100 where 0 is the top left corner, 25 is the top right corner, 50 is the bottom right corner, and 75 is the bottom left corner. */
 	position: number;
 };
 
-export default function Bug({ position }: BugProps) {
+export default function Bug({ health, setHealth, position }: BugProps) {
 	const speed = 0.005;
 	const center = 50;
 
@@ -47,8 +49,10 @@ export default function Bug({ position }: BugProps) {
 		if (!moving) return;
 
 		const interval = setInterval(() => {
-			if (Math.abs(center - x) < 10 && Math.abs(center - y) < 10) {
+			if (Math.abs(center - x) < 15 && Math.abs(center - y) < 15) {
 				setMoving(false);
+				clearInterval(interval);
+				if (health > 0) setHealth(health - 1);
 			}
 			setX(x + (center - x) * speed);
 			setY(y + (center - y) * speed);
@@ -58,7 +62,7 @@ export default function Bug({ position }: BugProps) {
 			clearTimeout(timeout);
 			clearInterval(interval);
 		};
-	}, [moving, position, timeOffset, x, y]);
+	}, [health, moving, position, setHealth, timeOffset, x, y]);
 
 	return (
 		<div

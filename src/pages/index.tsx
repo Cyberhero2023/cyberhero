@@ -21,7 +21,7 @@ export default function Home() {
 				<title>Cyber Hero</title>
 				<meta name="description" content="A game for teaching cybersecurity to kids." />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon shortcut" href="/logo.svg" />
 			</Head>
 			<main className={`${styles.main} ${font.className}`}>
 				{loading ? (
