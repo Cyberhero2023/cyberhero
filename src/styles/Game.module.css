@@ -1,0 +1,6 @@
+.background {
+    position: absolute;
+    inset: 0;
+    isolation: isolate;
+    z-index: -1;
+}

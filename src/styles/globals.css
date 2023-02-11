@@ -9,7 +9,7 @@
 html,
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   color-scheme: dark;
   font-family: "PLUSCodeLatin", 'Courier New', Courier, monospace;
   height: 100%;

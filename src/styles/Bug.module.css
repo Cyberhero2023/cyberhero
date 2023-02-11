@@ -1,0 +1,25 @@
+.bug {
+    --x: 0;
+    --y: 0;
+    --size: 1;
+    --time-offset: 0s;
+    --rotation: 0deg;
+
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: url(/bug.svg) no-repeat center center;
+    filter: invert(100%);
+    transform: translate(var(--x), var(--y)) skew(0deg) rotate(var(--rotation)) scale(var(--size));
+    animation: wobble 0.5s infinite alternate ease-in-out var(--time-offset);
+}
+
+@keyframes wobble {
+    from {
+        transform: translate(var(--x), var(--y)) skew(-1deg) rotate(var(--rotation)) scale(var(--size));
+    }
+
+    to {
+        transform: translate(var(--x), var(--y)) skew(1deg) rotate(var(--rotation)) scale(var(--size));
+    }
+}
