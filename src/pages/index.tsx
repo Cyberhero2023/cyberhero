@@ -10,13 +10,13 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>uOttaHack Project</title>
-				<meta name="description" content="uOttaHack Project" />
+				<title>Cyber Hero</title>
+				<meta name="description" content="A game for teaching cybersecurity to kids." />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={`${styles.main} ${font}`}>
-				<Image src={logo} alt="CSE Logo" width={200} height={200} className={styles.logo} />
+				<Image src={logo} alt="Cyber Hero Logo" width={200} height={200} className={styles.logo} />
 				<h2 className={styles.loadingText}>Loading...</h2>
 			</main>
 		</>
