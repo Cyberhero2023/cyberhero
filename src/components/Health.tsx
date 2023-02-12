@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../styles/Health.module.css";
 
 type HealthProps = {
