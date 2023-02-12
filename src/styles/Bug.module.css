@@ -7,6 +7,7 @@
     position: absolute;
     width: 5vw;
     height: 5vw;
+    border: none;
     background: url(/bug.svg) no-repeat;
 	background-position: 6px 0px;
     transform: translate(var(--x), var(--y)) skew(0deg) rotate(var(--rotation)) scale(var(--size));

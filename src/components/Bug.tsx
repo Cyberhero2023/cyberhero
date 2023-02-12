@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 const CENTER = 50;
 
 type BugProps = {
-	speed: number;
 	health: number;
 	setHealth: (health: number) => void;
 	/** Position is a number between 0 and 100 where 0 is the top left corner, 25 is the top right corner, 50 is the bottom right corner, and 75 is the bottom left corner. */
 	position: number;
+	speed: number;
+	showPopup: () => void;
 };
 
-export default function Bug({ health, setHealth, position, speed }: BugProps) {
+export default function Bug({ health, setHealth, position, speed, showPopup }: BugProps) {
 	const [x, setX] = useState(0);
 	const [y, setY] = useState(0);
 	const [moving, setMoving] = useState<boolean | null>(null);
@@ -65,7 +66,9 @@ export default function Bug({ health, setHealth, position, speed }: BugProps) {
 	}, [health, moving, position, setHealth, speed, timeOffset, x, y]);
 
 	return (
-		<div
+		<button
+			type="button"
+			onClick={showPopup}
 			className={styles.bug}
 			style={
 				{

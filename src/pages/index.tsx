@@ -2,13 +2,23 @@ import styles from "@/styles/Home.module.css";
 import { M_PLUS_Code_Latin } from "@next/font/google";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Game from "@/components/Game";
 
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
 export default function Home() {
 	const [state, setState] = useState<"menu" | "playing" | "gameover">("menu");
+
+	useEffect(() => {
+		const handleKeydown = (event: KeyboardEvent) => {
+			if (event.key === "Enter") {
+				setState("playing");
+			}
+		};
+		window.addEventListener("keydown", handleKeydown);
+		return () => window.removeEventListener("keydown", handleKeydown);
+	}, []);
 
 	return (
 		<>
