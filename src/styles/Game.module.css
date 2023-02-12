@@ -23,6 +23,10 @@
 	width: 2vw;
 }
 
+.audio {
+	background: url(/audio.svg) no-repeat center;
+}
+
 .pause {
 	background: url(/pause.svg) no-repeat center;
 }

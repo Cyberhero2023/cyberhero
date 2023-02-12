@@ -53,6 +53,12 @@ button:disabled {
 }
 
 @media (prefers-color-scheme: dark) {
+
+	html,
+	body {
+		color-scheme: dark;
+	}
+
 	body {
 		background-color: hsl(0, 0%, 10%);
 		color: hsl(0, 0%, 90%);

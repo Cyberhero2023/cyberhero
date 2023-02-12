@@ -17,28 +17,6 @@ export default [
 		"explanation": "Protecting your accounts online helps keep your personal and financial information safe and secure."
 	},
 	{
-		"question": "What is one way to strengthen your password?",
-		"options": [
-			"Add special characters(eg. !@#$%&)",
-			"Using the names of your loved ones",
-			"Writing your password on a piece of paper to keep it safe",
-			"Using a single word to remember your password easier"
-		],
-		"answer": 3,
-		"explanation": "Using a single word to remember your password easier is not a good idea."
-	},
-	{
-		"question": "What is phishing?",
-		"options": [
-			"Add special characters(eg. !@#$%&)",
-			"Using the names of your loved ones",
-			"Writing your password on a piece of paper to keep it safe",
-			"Using a single word to remember your password easier"
-		],
-		"answer": 3,
-		"explanation": "Phishing is a kind of cyber attack where criminals use fake emails, text messages or websites to extort sensitive information about you."
-	},
-	{
 		"question": "What is one way to strengthen your password",
 		"options": [
 			"Add special characters(eg. !@#$%&)",

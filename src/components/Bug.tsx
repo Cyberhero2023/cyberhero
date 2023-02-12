@@ -39,19 +39,15 @@ export default function Bug({ health, setHealth, position, speed, showPopup, pau
 					break;
 			}
 		}
-	}, [position, x, y]);
 
-	useEffect(() => {
+		// Rotate towards the center of the screen
+		setRotation((Math.atan2(CENTER - y, CENTER - x) * 180) / Math.PI + 90);
+
 		if (moving === null) {
 			setMoving(true);
 		} else if (moving === false) {
 			return;
 		}
-	}, [moving]);
-
-	useEffect(() => {
-		// Rotate towards the center of the screen
-		setRotation((Math.atan2(CENTER - y, CENTER - x) * 180) / Math.PI + 90);
 
 		// Move towards the center of the screen
 		const interval = setInterval(() => {
@@ -66,7 +62,7 @@ export default function Bug({ health, setHealth, position, speed, showPopup, pau
 		}, 1000 / 60);
 
 		return () => clearInterval(interval);
-	}, [health, paused, setHealth, speed, x, y]);
+	}, [health, moving, paused, position, setHealth, speed, x, y]);
 
 	return (
 		<button
