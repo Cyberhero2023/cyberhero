@@ -63,14 +63,7 @@ export default function Home() {
 				<audio ref={audio} src="/mew.mp3" autoPlay loop />
 				{state === "menu" && (
 					<>
-						<Image
-							src="/bug.svg"
-							alt="Cyber Hero Logo"
-							width={250}
-							height={250}
-							className={styles.logo}
-							priority
-						/>
+						<Image src="/bug.svg" alt="Cyber Hero Logo" width={250} height={250} priority />
 						<h2 className={styles.heading}>Cyber Hero</h2>
 						<button className={styles.button} onClick={() => setState("playing")}>
 							Start
@@ -80,14 +73,7 @@ export default function Home() {
 				{state === "playing" && <Game setState={setState} paused={paused} setPaused={setPaused} />}
 				{state === "gameover" && (
 					<>
-						<Image
-							src="/bugs.svg"
-							alt="Game Over"
-							width={250}
-							height={250}
-							className={styles.gameover}
-							priority
-						/>
+						<Image src="/bugs.svg" alt="Game Over" width={250} height={250} priority />
 						<h2 className={styles.heading}>Game Over</h2>
 						<button className={styles.button} onClick={() => setState("playing")}>
 							Restart

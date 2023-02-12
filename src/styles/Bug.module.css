@@ -14,9 +14,6 @@
     transform: translate(var(--x), var(--y)) skew(0deg) rotate(var(--rotation)) scale(var(--size));
     animation: wobble 0.5s infinite alternate ease-in-out;
     transition: opacity 0.5s ease-in-out;
-
-    /* https://codepen.io/sosuke/pen/Pjoqqp */
-    filter: invert(74%) sepia(48%) saturate(5345%) hue-rotate(83deg) brightness(109%) contrast(135%);
 }
 
 @keyframes wobble {
