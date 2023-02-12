@@ -3,7 +3,6 @@ import { M_PLUS_Code_Latin } from "@next/font/google";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import logo from "../assets/logo.svg";
 import Game from "@/components/Game";
 
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
@@ -27,10 +26,10 @@ export default function Home() {
 				{loading ? (
 					<>
 						<Image
-							src={logo}
+							src="/logo.svg"
 							alt="Cyber Hero Logo"
-							width={200}
-							height={200}
+							width={250}
+							height={250}
 							className={styles.logo}
 							priority
 						/>

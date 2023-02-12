@@ -4,3 +4,12 @@
 	margin-left: -3vw;
 	margin-top: -3vw;
 }
+
+.menu {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	background: url(/pause.svg) no-repeat center;
+	width: 2vw;
+	height: 2vw;
+}

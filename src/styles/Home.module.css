@@ -6,7 +6,12 @@
 	height: 100%;
 }
 
+.logo {
+	drop-shadow: 0px 0px 2px white;
+}
+
 .loadingText {
+	margin-top:50px;
 	font-size: 5rem;
 }
 

@@ -1,0 +1,6 @@
+.background {
+	position: absolute;
+	backdrop-filter: blur(10px);
+	background: transparent;
+	z-index: 1;
+}

@@ -1,6 +1,5 @@
 .mainframe {
 	width: max(5rem, 20vw);
 	height: max(5rem, 20vh);
-	background: url(/server-happy.svg) no-repeat center;
 	filter: invert(100%);
 }
