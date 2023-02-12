@@ -8,10 +8,16 @@
 .menu {
 	position: absolute;
 	display: flex;
-	gap: 12px;
-	right: 25px;
-	top: 25px;
+	gap: 1rem;
+	right: 2rem;
+	top: 2rem;
 	height: 2vw;
+}
+
+.menu button,
+.paused button {
+	border: none;
+	cursor: pointer;
 }
 
 .pause {
@@ -31,7 +37,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 25px;
+	gap: 2rem;
 	width: 100%;
 	height: 100%;
 	backdrop-filter: blur(2rem);
@@ -39,15 +45,15 @@
 }
 
 .paused span {
-	font-size: 32px;
+	font-size: 2rem;
 }
 
 .play {
 	position: absolute;
 	display: flex;
-	gap: 12px;
-	right: 25px;
-	top: 25px;
+	gap: 1rem;
+	right: 2rem;
+	top: 2rem;
 	height: 2vw;
 	width: 2vw;
 	background: url(/play.svg) no-repeat center;

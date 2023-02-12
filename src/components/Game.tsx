@@ -50,20 +50,20 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 	return (
 		<>
 			{paused && (
-				<div className={styles.paused}>
+				<nav className={styles.paused} aria-label="Paused">
 					<h2>Paused</h2>
 					<span>Press SPACE to continue</span>
-					<div className={styles.play} onClick={() => setPaused(!paused)} />
-				</div>
+					<button className={styles.play} onClick={() => setPaused(!paused)} />
+				</nav>
 			)}
 			<Popup show={popup} setShow={setPopup} id={9} />
 			<div className={styles.background}>{bugs}</div>
 			<Mainframe health={health} />
 			<Health health={health} />
-			<div className={styles.menu}>
-				<div className={styles.home} onClick={() => setState("menu")} />
-				<div className={styles.pause} onClick={() => setPaused(!paused)} />
-			</div>
+			<nav className={styles.menu} aria-label="Menu">
+				<button className={styles.home} onClick={() => setState("menu")} />
+				<button className={styles.pause} onClick={() => setPaused(!paused)} />
+			</nav>
 		</>
 	);
 }

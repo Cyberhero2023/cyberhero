@@ -7,10 +7,6 @@
 	gap: 3rem;
 }
 
-.menu {
-	display: contents;
-}
-
 .logo {
 	/* https://codepen.io/sosuke/pen/Pjoqqp */
 	filter: invert(74%) sepia(48%) saturate(5345%) hue-rotate(83deg) brightness(109%) contrast(135%);
@@ -21,11 +17,9 @@
 }
 
 .button {
-	font-size: 5rem;
-	background: none;
-	border: none;
-	cursor: pointer;
-	font-family: inherit;
+	box-sizing: border-box;
+	padding: 1rem;
+	width: 100%;
 }
 
 .heading+.button {
