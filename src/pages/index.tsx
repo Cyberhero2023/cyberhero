@@ -43,7 +43,7 @@ export default function Home() {
 				{state === "menu" && (
 					<div className={styles.menu} onClick={() => setState("playing")}>
 						<Image
-							src="/logo.svg"
+							src="/bug.svg"
 							alt="Cyber Hero Logo"
 							width={250}
 							height={250}
