@@ -1,21 +1,21 @@
 import styles from "@/styles/Bug.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+const CENTER = 50;
 
 type BugProps = {
+	speed: number;
 	health: number;
 	setHealth: (health: number) => void;
 	/** Position is a number between 0 and 100 where 0 is the top left corner, 25 is the top right corner, 50 is the bottom right corner, and 75 is the bottom left corner. */
 	position: number;
 };
 
-export default function Bug({ health, setHealth, position }: BugProps) {
-	const speed = 0.005;
-	const center = 50;
-
+export default function Bug({ health, setHealth, position, speed }: BugProps) {
 	const [x, setX] = useState(0);
 	const [y, setY] = useState(0);
-	const [moving, setMoving] = useState(false);
-	const [timeOffset] = useState(Math.random() * 500);
+	const [moving, setMoving] = useState<boolean | null>(null);
+	const [timeOffset] = useState(Math.random() * 5000);
 	const [rotation, setRotation] = useState(0);
 	const [size] = useState(Math.random() * 0.5 + 0.5);
 
@@ -39,30 +39,30 @@ export default function Bug({ health, setHealth, position }: BugProps) {
 			}
 		}
 
-		setRotation((Math.atan2(center - y, center - x) * 180) / Math.PI + 90);
+		setRotation((Math.atan2(CENTER - y, CENTER - x) * 180) / Math.PI + 90);
 
-		const timeout = setTimeout(() => {
+		if (moving === null) {
 			setMoving(true);
-		}, timeOffset * 10);
+		} else if (moving === false) {
+			return;
+		}
 
 		// Move towards the center of the screen
-		if (!moving) return;
-
 		const interval = setInterval(() => {
-			if (Math.abs(center - x) < 15 && Math.abs(center - y) < 15) {
+			if (Math.abs(CENTER - x) < 15 && Math.abs(CENTER - y) < 15) {
 				setMoving(false);
 				clearInterval(interval);
-				if (health > 0) setHealth(health - 1);
+				if (health > 0) setHealth(health - 5);
 			}
-			setX(x + (center - x) * speed);
-			setY(y + (center - y) * speed);
+			setX(x + (CENTER - x) * speed);
+			setY(y + (CENTER - y) * speed);
 		}, 1000 / 60);
 
 		return () => {
-			clearTimeout(timeout);
+			clearInterval(interval);
 			clearInterval(interval);
 		};
-	}, [health, moving, position, setHealth, timeOffset, x, y]);
+	}, [health, moving, position, setHealth, speed, timeOffset, x, y]);
 
 	return (
 		<div
@@ -73,7 +73,6 @@ export default function Bug({ health, setHealth, position }: BugProps) {
 					"--size-rem": `${size / 10}rem`,
 					"--x": `calc(max(${x}vw - var(--size-rem) * 2, -1 * var(--size-rem)))`,
 					"--y": `calc(max(${y}vh - var(--size-rem) * 2, -1 * var(--size-rem)))`,
-					"--time-offset": `${timeOffset}ms`,
 					"--rotation": `${rotation}deg`,
 					opacity: moving ? 1 : 0,
 				} as React.CSSProperties

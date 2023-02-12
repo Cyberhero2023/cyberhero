@@ -1,7 +1,7 @@
 import styles from "@/styles/Popup.module.css";
 
 type QuestionProps = {
-	value: string;
+	question: string;
 };
 
 export default function Popup({ question }: QuestionProps) {
