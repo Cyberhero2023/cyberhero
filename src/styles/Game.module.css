@@ -28,10 +28,27 @@
 	position: absolute;
 	z-index: 1;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 25px;
 	width: 100%;
 	height: 100%;
 	backdrop-filter: blur(2rem);
 	font-size: 5rem;
+}
+
+.paused span {
+	font-size: 32px;
+}
+
+.play {
+	position: absolute;
+	display: flex;
+	gap: 12px;
+	right: 25px;
+	top: 25px;
+	height: 2vw;
+	width: 2vw;
+	background: url(/play.svg) no-repeat center;
 }
