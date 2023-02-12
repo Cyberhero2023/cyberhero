@@ -1,5 +1,6 @@
 import styles from "@/styles/Popup.module.css";
 import { useEffect, useRef } from "react";
+import data from '@/assets/questions.json';
 
 type QuestionProps = {
 	show: boolean;
@@ -34,6 +35,9 @@ export default function Popup({ show, setShow, question }: QuestionProps) {
 					</svg>
 				</button>
 			</header>
+			<main>
+				{/* Add code here */}
+			</main>
 		</dialog>
 	);
 }

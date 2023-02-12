@@ -1,0 +1,28 @@
+[
+    {
+        "question": "Which of the following is a strong password?",
+        "options": ["password123", "stinkypotatoe", "abc", "oMega_Shoot12POW!"],
+        "correctAnswer": [3]
+    },
+    {
+        "question": "Why is it important to protect your accounts online?",
+        "options": ["Protecting personal and financial information", "Protecting virtual pets", "Making sure no one steals your online popularity", "Keeping control over your online persona"],
+        "correctAnswer": [0]
+    },
+    {
+        "question": "What is one way to strengthen your password?",
+        "options": ["Add special characters(eg. !@#$%&)", "Using the names of your loved ones", "Writing your password on a piece of paper to keep it safe", "Using a single word to remember your password easier"],
+        "correctAnswer": [3]
+    },
+    {
+        "question": "What is phishing?",
+        "options": ["Add special characters(eg. !@#$%&)", "Using the names of your loved ones", "Writing your password on a piece of paper to keep it safe", "Using a single word to remember your password easier"],
+        "correctAnswer": [3]
+    },
+    {
+        "question": "What is one way to strengthen your password",
+        "options": ["Add special characters(eg. !@#$%&)", "Using the names of your loved ones", "Writing your password on a piece of paper to keep it safe", "Using a single word to remember your password easier"],
+        "correctAnswer": [3]
+    }
+
+]
