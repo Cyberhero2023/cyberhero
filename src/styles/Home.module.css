@@ -11,6 +11,11 @@
 	display: contents;
 }
 
+.logo {
+	/* https://codepen.io/sosuke/pen/Pjoqqp */
+	filter: invert(74%) sepia(48%) saturate(5345%) hue-rotate(83deg) brightness(109%) contrast(135%);
+}
+
 .heading {
 	font-size: 5rem;
 }

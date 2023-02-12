@@ -61,10 +61,10 @@ export default function Home() {
 					<div className={styles.menu} onClick={() => setState("playing")}>
 						<Image
 							src="/bugs.svg"
-							alt="Cyber Hero Logo"
+							alt="Game Over"
 							width={250}
 							height={250}
-							className={styles.logo}
+							className={styles.gameover}
 							priority
 						/>
 						<h2 className={styles.heading}>Game Over</h2>
