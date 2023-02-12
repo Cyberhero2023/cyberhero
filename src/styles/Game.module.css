@@ -14,8 +14,9 @@
 	height: 2vw;
 }
 
-.menu button,
-.paused button {
+:is(.menu, .paused) button,
+:is(.menu, .paused) button:is(:hover, :focus, :disabled) {
+	background-color: transparent;
 	border: none;
 	cursor: pointer;
 }

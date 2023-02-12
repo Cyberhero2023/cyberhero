@@ -1,9 +1,10 @@
 import styles from "@/styles/Game.module.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Bug from "./Bug";
 import Health from "./Health";
 import Mainframe from "./Mainframe";
 import Popup from "./Popup";
+import questions from "@/questions";
 
 type GameProps = {
 	setState: (state: GameStates) => void;
@@ -18,6 +19,7 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 		new Array(5).fill(0).map((_, i) => Math.floor(Math.random() * 10) + i * 20),
 	);
 	const [health, setHealth] = useState(100);
+	const [questionIndex, setQuestionIndex] = useState(0);
 
 	useEffect(() => {
 		const audioInteraction = () => {
@@ -77,14 +79,24 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 					<button className={styles.play} onClick={() => setPaused(!paused)} />
 				</nav>
 			)}
-			<Popup show={popup} setShow={setPopup} id={9} />
+			<Popup
+				show={popup}
+				setShow={setPopup}
+				question={questions[questionIndex]}
+				nextQuestion={() => setQuestionIndex(questionIndex + 1)}
+				removeBug={() => setPositions(positions => positions?.slice(1))}
+			/>
 			<div className={styles.background}>{bugs}</div>
 			<Mainframe health={health} />
 			<Health health={health} />
 			<nav className={styles.menu} aria-label="Menu">
-				<button className={styles.audio} onClick={() => {
-					audio.current.muted = !audio.current.muted; 
-				}} />
+				<button
+					className={styles.audio}
+					onClick={() => {
+						if (!audio.current) return;
+						audio.current.muted = !audio.current?.muted;
+					}}
+				/>
 				<button className={styles.home} onClick={() => setState("menu")} />
 				<button className={styles.pause} onClick={() => setPaused(!paused)} />
 			</nav>
