@@ -20,6 +20,7 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 	);
 	const [health, setHealth] = useState(100);
 	const [questionIndex, setQuestionIndex] = useState(0);
+	const mutedRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		const audioInteraction = () => {
@@ -92,9 +93,14 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 			<nav className={styles.menu} aria-label="Menu">
 				<button
 					className={styles.audio}
+					ref={mutedRef}
 					onClick={() => {
 						if (!audio.current) return;
 						audio.current.muted = !audio.current?.muted;
+						if (!mutedRef.current) return;
+						mutedRef.current.style.backgroundImage = `url("/${
+							audio.current?.muted ? "muted" : "audio"
+						}.svg")`;
 					}}
 				/>
 				<button className={styles.home} onClick={() => setState("menu")} />
