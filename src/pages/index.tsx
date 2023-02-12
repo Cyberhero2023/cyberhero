@@ -8,7 +8,6 @@ import Game from "@/components/Game";
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
 export default function Home() {
-	const audio = useRef<HTMLAudioElement>(null);
 	const [state, setState] = useState<GameStates>("menu");
 	const [paused, setPaused] = useState(false);
 
@@ -32,25 +31,6 @@ export default function Home() {
 		}
 	}, [state]);
 
-	useEffect(() => {
-		const audioInteraction = () => {
-			if (audio.current) {
-				audio.current.play();
-			}
-		};
-
-		window.addEventListener("click", audioInteraction);
-		window.addEventListener("touchstart", audioInteraction);
-		window.addEventListener("keydown", audioInteraction);
-		window.addEventListener("pointermove", audioInteraction);
-		return () => {
-			window.removeEventListener("click", audioInteraction);
-			window.removeEventListener("touchstart", audioInteraction);
-			window.removeEventListener("keydown", audioInteraction);
-			window.removeEventListener("pointermove", audioInteraction);
-		};
-	}, [paused]);
-
 	return (
 		<>
 			<Head>
@@ -60,7 +40,6 @@ export default function Home() {
 				<link rel="icon shortcut" href="/logo.svg" />
 			</Head>
 			<main className={`${styles.main} ${font.className}`}>
-				<audio ref={audio} src="/mew.mp3" autoPlay loop />
 				{state === "menu" && (
 					<>
 						<Image src="/bug.svg" alt="Cyber Hero Logo" width={250} height={250} priority />
