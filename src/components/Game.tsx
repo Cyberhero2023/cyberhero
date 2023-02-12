@@ -6,11 +6,12 @@ import Mainframe from "./Mainframe";
 import Popup from "./Popup";
 
 type GameProps = {
-	setState: (state: "playing" | "menu" | "gameover") => void;
+	setState: (state: GameStates) => void;
 };
 
 export default function Game({ setState }: GameProps) {
 	const [popup, setPopup] = useState(false);
+	const [paused, setPaused] = useState(false);
 	const [positions, setPositions] = useState<number[]>(
 		new Array(5).fill(0).map((_, i) => Math.floor(Math.random() * 10) + i * 20),
 	);
@@ -25,7 +26,9 @@ export default function Game({ setState }: GameProps) {
 				return newPositions;
 			});
 		}, 10000);
+	}, []);
 
+	useEffect(() => {
 		if (health <= 0) {
 			setState("gameover");
 		}
@@ -39,20 +42,18 @@ export default function Game({ setState }: GameProps) {
 			position={position}
 			speed={i * 0.00005 + 0.0005}
 			showPopup={() => setPopup(true)}
+			paused={paused}
 		/>
 	));
 
-	const pause = () => {
-		alert("Game paused. Press OK to continue.");
-	};
-
 	return (
 		<>
+			{paused && <div className={styles.paused}>Paused</div>}
 			<Popup question="test" show={popup} setShow={setPopup} />
 			<div className={styles.background}>{bugs}</div>
 			<Mainframe health={health} />
 			<Health health={health} />
-			<div className={styles.menu} onClick={pause} />
+			<div className={styles.menu} onClick={() => setPaused(!paused)} />
 		</>
 	);
 }

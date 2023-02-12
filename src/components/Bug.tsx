@@ -10,13 +10,13 @@ type BugProps = {
 	position: number;
 	speed: number;
 	showPopup: () => void;
+	paused: boolean;
 };
 
-export default function Bug({ health, setHealth, position, speed, showPopup }: BugProps) {
+export default function Bug({ health, setHealth, position, speed, showPopup, paused }: BugProps) {
 	const [x, setX] = useState(0);
 	const [y, setY] = useState(0);
 	const [moving, setMoving] = useState<boolean | null>(null);
-	const [timeOffset] = useState(Math.random() * 5000);
 	const [rotation, setRotation] = useState(0);
 	const [size] = useState(Math.random() * 0.5 + 0.5);
 
@@ -39,17 +39,23 @@ export default function Bug({ health, setHealth, position, speed, showPopup }: B
 					break;
 			}
 		}
+	}, [position, x, y]);
 
-		setRotation((Math.atan2(CENTER - y, CENTER - x) * 180) / Math.PI + 90);
-
+	useEffect(() => {
 		if (moving === null) {
 			setMoving(true);
 		} else if (moving === false) {
 			return;
 		}
+	}, [moving]);
+
+	useEffect(() => {
+		// Rotate towards the center of the screen
+		setRotation((Math.atan2(CENTER - y, CENTER - x) * 180) / Math.PI + 90);
 
 		// Move towards the center of the screen
 		const interval = setInterval(() => {
+			if (paused) return;
 			if (Math.abs(CENTER - x) < 15 && Math.abs(CENTER - y) < 15) {
 				setMoving(false);
 				clearInterval(interval);
@@ -59,11 +65,8 @@ export default function Bug({ health, setHealth, position, speed, showPopup }: B
 			setY(y + (CENTER - y) * speed);
 		}, 1000 / 60);
 
-		return () => {
-			clearInterval(interval);
-			clearInterval(interval);
-		};
-	}, [health, moving, position, setHealth, speed, timeOffset, x, y]);
+		return () => clearInterval(interval);
+	}, [health, paused, setHealth, speed, x, y]);
 
 	return (
 		<button

@@ -8,7 +8,7 @@ import Game from "@/components/Game";
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
 export default function Home() {
-	const [state, setState] = useState<"menu" | "playing" | "gameover">("menu");
+	const [state, setState] = useState<GameStates>("menu");
 
 	useEffect(() => {
 		const handleKeydown = (event: KeyboardEvent) => {
