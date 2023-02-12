@@ -60,7 +60,7 @@ export default function Home() {
 				<link rel="icon shortcut" href="/logo.svg" />
 			</Head>
 			<main className={`${styles.main} ${font.className}`}>
-				<audio src="/mew.mp3" autoPlay loop />
+				<audio ref={audio} src="/mew.mp3" autoPlay loop />
 				{state === "menu" && (
 					<>
 						<Image
