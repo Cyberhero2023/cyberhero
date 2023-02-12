@@ -50,6 +50,7 @@ export default function Home() {
 							className={styles.logo}
 							priority
 						/>
+						<h2 className={styles.heading}>Cyber Hero</h2>
 						<button className={styles.button}>
 							Start
 						</button>
