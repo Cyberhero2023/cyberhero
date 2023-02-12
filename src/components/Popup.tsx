@@ -1,15 +1,18 @@
 import styles from "@/styles/Popup.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import questions from "@/questions";
 
 type QuestionProps = {
 	show: boolean;
 	setShow: (show: boolean) => void;
-	id: number;
+	question: typeof questions[number];
+	nextQuestion: () => void;
+	removeBug: () => void;
 };
 
-export default function Popup({ show, setShow, id }: QuestionProps) {
+export default function Popup({ show, setShow, question, nextQuestion, removeBug }: QuestionProps) {
 	const ref = useRef<HTMLDialogElement>(null);
+	const [wrongAnswer, setWrongAnswer] = useState(false);
 
 	useEffect(() => {
 		if (show && !ref.current?.open) {
@@ -19,11 +22,26 @@ export default function Popup({ show, setShow, id }: QuestionProps) {
 		}
 	}, [show]);
 
+	const reset = () => {
+		setShow(false);
+		nextQuestion();
+		ref.current?.querySelectorAll("input").forEach(input => (input.checked = false));
+	};
+
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const answer = event.currentTarget.answer.value;
-		if (questions[id]?.answer.map(a => questions[id]?.options[a]).includes(answer)) {
-			setShow(false);
+		if (wrongAnswer) {
+			setWrongAnswer(false);
+			reset();
+			return;
+		}
+
+		if (question.answer.map(a => question.options[a]).includes(answer)) {
+			removeBug();
+			reset();
+		} else {
+			setWrongAnswer(true);
 		}
 	};
 
@@ -36,7 +54,7 @@ export default function Popup({ show, setShow, id }: QuestionProps) {
 			}}
 		>
 			<header className={styles.header}>
-				<h1 className={styles.title}>{questions[id]?.question}</h1>
+				<h1 className={styles.title}>{question?.question}</h1>
 				<button onClick={() => setShow(false)}>
 					<svg viewBox="0 0 100 100" width={24} height={24}>
 						<line x1="0" y1="0" x2="100" y2="100" stroke="white" strokeWidth={10} strokeLinecap="round" />
@@ -47,7 +65,7 @@ export default function Popup({ show, setShow, id }: QuestionProps) {
 			<main>
 				<form onSubmit={handleSubmit}>
 					<ul className={styles.answers}>
-						{questions[id]?.options.map((answer, i) => (
+						{question.options.map((answer, i) => (
 							<li key={i}>
 								<input
 									type="radio"
@@ -63,7 +81,8 @@ export default function Popup({ show, setShow, id }: QuestionProps) {
 							</li>
 						))}
 					</ul>
-					<button className={styles.submit}>Submit</button>
+					{wrongAnswer && <p>{question.explanation}</p>}
+					<button className={styles.submit}>{wrongAnswer ? "Next" : "Submit"}</button>
 				</form>
 			</main>
 		</dialog>
