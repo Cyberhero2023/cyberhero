@@ -37,7 +37,7 @@ export default function Popup({ show, setShow, question, nextQuestion, removeBug
 			return;
 		}
 
-		if (question.answer.map(a => question.options[a]).includes(answer)) {
+		if (Object.values(question.options).indexOf(answer) === question.answer) {
 			removeBug();
 			reset();
 		} else {
