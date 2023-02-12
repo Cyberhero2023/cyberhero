@@ -19,21 +19,16 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+	filter: invert(1);
+	width: 2vw;
 }
 
 .pause {
 	background: url(/pause.svg) no-repeat center;
-	width: 2vw;
-}
-
-.audio {
-	background: url(/audio.svg) no-repeat center;
-	width: 2vw;
 }
 
 .home {
 	background: url(/home.svg) no-repeat center;
-	width: 2vw;
 }
 
 .paused {
@@ -63,4 +58,11 @@
 	height: 2vw;
 	width: 2vw;
 	background: url(/play.svg) no-repeat center;
+}
+
+@media (prefers-color-scheme: dark) {
+	:is(.menu, .paused) button,
+	:is(.menu, .paused) button:is(:hover, :focus, :disabled) {
+		filter: invert(0);
+	}
 }

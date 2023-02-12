@@ -57,8 +57,8 @@ export default function Popup({ show, setShow, question, nextQuestion, removeBug
 				<h1 className={styles.title}>{question?.question}</h1>
 				<button onClick={() => setShow(false)}>
 					<svg viewBox="0 0 100 100" width={24} height={24}>
-						<line x1="0" y1="0" x2="100" y2="100" stroke="white" strokeWidth={10} strokeLinecap="round" />
-						<line x1="0" y1="100" x2="100" y2="0" stroke="white" strokeWidth={10} strokeLinecap="round" />
+						<line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth={10} strokeLinecap="round" />
+						<line x1="0" y1="100" x2="100" y2="0" stroke="currentColor" strokeWidth={10} strokeLinecap="round" />
 					</svg>
 				</button>
 			</header>

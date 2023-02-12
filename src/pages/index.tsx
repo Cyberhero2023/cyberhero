@@ -1,9 +1,9 @@
+import Game from "@/components/Game";
 import styles from "@/styles/Home.module.css";
 import { M_PLUS_Code_Latin } from "@next/font/google";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import Game from "@/components/Game";
+import { useEffect, useState } from "react";
 
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
@@ -18,6 +18,7 @@ export default function Home() {
 			} else if (event.key === "Escape" && !document.querySelector(":focus")) {
 				setState("menu");
 			} else if (event.key === " ") {
+				event.preventDefault();
 				setPaused(paused => !paused);
 			}
 		};

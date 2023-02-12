@@ -1,5 +1,12 @@
 .mainframe {
 	width: max(5rem, 20vw);
 	height: max(5rem, 20vh);
-	filter: invert(100%);
 }
+
+@media (prefers-color-scheme: dark) {
+	.mainframe {
+		filter: invert(100%);
+	}
+}
+
+

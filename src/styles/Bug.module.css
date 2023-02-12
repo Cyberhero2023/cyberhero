@@ -14,6 +14,7 @@
     transform: translate(var(--x), var(--y)) skew(0deg) rotate(var(--rotation)) scale(var(--size));
     animation: wobble 0.5s infinite alternate ease-in-out;
     transition: opacity 0.5s ease-in-out;
+    filter: invert(1);
 }
 
 @keyframes wobble {
@@ -25,3 +26,10 @@
         transform: translate(var(--x), var(--y)) skew(5deg) rotate(var(--rotation)) scale(var(--size));
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .bug {
+        filter: invert(0);
+    }
+}
+
