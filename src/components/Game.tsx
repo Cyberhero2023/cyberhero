@@ -1,5 +1,5 @@
 import styles from "@/styles/Game.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Bug from "./Bug";
 import Health from "./Health";
 import Mainframe from "./Mainframe";
@@ -19,6 +19,7 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 		new Array(5).fill(0).map((_, i) => Math.floor(Math.random() * 10) + i * 20),
 	);
 	const [health, setHealth] = useState(100);
+	const [questionIndex, setQuestionIndex] = useState(0);
 
 	useEffect(() => {
 		const audioInteraction = () => {
@@ -92,7 +93,8 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 				<button
 					className={styles.audio}
 					onClick={() => {
-						audio.current.muted = !audio.current.muted;
+						if (!audio.current) return;
+						audio.current.muted = !audio.current?.muted;
 					}}
 				/>
 				<button className={styles.home} onClick={() => setState("menu")} />
