@@ -15,7 +15,7 @@ export default function Home() {
 		const handleKeydown = (event: KeyboardEvent) => {
 			if (event.key === "Enter") {
 				setState("playing");
-			} else if (event.key === "Escape") {
+			} else if (event.key === "Escape" && !document.querySelector(":focus")) {
 				setState("menu");
 			} else if (event.key === " ") {
 				setPaused(paused => !paused);
@@ -41,7 +41,7 @@ export default function Home() {
 			</Head>
 			<main className={`${styles.main} ${font.className}`}>
 				{state === "menu" && (
-					<>
+					<div className={styles.menu} onClick={() => setState("playing")}>
 						<Image
 							src="/logo.svg"
 							alt="Cyber Hero Logo"
@@ -50,14 +50,14 @@ export default function Home() {
 							className={styles.logo}
 							priority
 						/>
-						<button className={styles.button} onClick={() => setState("playing")}>
+						<button className={styles.button}>
 							Start
 						</button>
-					</>
+					</div>
 				)}
 				{state === "playing" && <Game setState={setState} paused={paused} setPaused={setPaused} />}
 				{state === "gameover" && (
-					<>
+					<div className={styles.menu} onClick={() => setState("playing")}>
 						<Image
 							src="/logo.svg"
 							alt="Cyber Hero Logo"
@@ -70,7 +70,7 @@ export default function Home() {
 						<button className={styles.button} onClick={() => setState("playing")}>
 							Restart
 						</button>
-					</>
+					</div>
 				)}
 			</main>
 		</>

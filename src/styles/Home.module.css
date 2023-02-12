@@ -7,6 +7,10 @@
 	gap: 3rem;
 }
 
+.menu {
+	display: contents;
+}
+
 .heading {
 	font-size: 5rem;
 }
@@ -19,6 +23,6 @@
 	font-family: inherit;
 }
 
-.heading + .button {
+.heading+.button {
 	font-size: 2rem;
 }
