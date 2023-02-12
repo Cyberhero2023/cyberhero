@@ -47,10 +47,6 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 		/>
 	));
 
-	const pause = () => {
-		alert("Game paused. Press OK to continue.");
-	};
-
 	return (
 		<>
 			{paused && <div className={styles.paused}>Paused</div>}
@@ -60,7 +56,7 @@ export default function Game({ setState, paused, setPaused }: GameProps) {
 			<Health health={health} />
 			<div className={styles.menu}>
 				<div className={styles.home} onClick={() => setState("menu")} />
-				<div className={styles.pause} onClick={pause} />
+				<div className={styles.pause} onClick={() => setPaused(!paused)} />
 			</div>
 		</>
 	);
