@@ -8,11 +8,7 @@ import Game from "@/components/Game";
 const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
 export default function Home() {
-	const [loading, setLoading] = useState(true);
-
-	setTimeout(() => {
-		setLoading(false);
-	}, 2000);
+	const [state, setState] = useState<"menu" | "playing" | "gameover">("menu");
 
 	return (
 		<>
@@ -23,7 +19,7 @@ export default function Home() {
 				<link rel="icon shortcut" href="/logo.svg" />
 			</Head>
 			<main className={`${styles.main} ${font.className}`}>
-				{loading ? (
+				{state === "menu" && (
 					<>
 						<Image
 							src="/logo.svg"
@@ -33,10 +29,27 @@ export default function Home() {
 							className={styles.logo}
 							priority
 						/>
-						<h2 className={styles.loadingText}>Loading...</h2>{" "}
+						<button className={styles.button} onClick={() => setState("playing")}>
+							Start
+						</button>
 					</>
-				) : (
-					<Game />
+				)}
+				{state === "playing" && <Game setState={setState} />}
+				{state === "gameover" && (
+					<>
+						<Image
+							src="/logo.svg"
+							alt="Cyber Hero Logo"
+							width={250}
+							height={250}
+							className={styles.logo}
+							priority
+						/>
+						<h2 className={styles.heading}>Game Over</h2>
+						<button className={styles.button} onClick={() => setState("playing")}>
+							Restart
+						</button>
+					</>
 				)}
 			</main>
 		</>

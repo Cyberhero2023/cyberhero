@@ -4,14 +4,21 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	gap: 3rem;
 }
 
-.logo {
-	drop-shadow: 0px 0px 2px white;
-}
-
-.loadingText {
-	margin-top:50px;
+.heading {
 	font-size: 5rem;
 }
 
+.button {
+	font-size: 5rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.heading + .button {
+	font-size: 2rem;
+}
