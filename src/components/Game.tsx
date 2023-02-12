@@ -7,11 +7,12 @@ import Popup from "./Popup";
 
 type GameProps = {
 	setState: (state: GameStates) => void;
+	paused: boolean;
+	setPaused: (paused: boolean) => void;
 };
 
-export default function Game({ setState }: GameProps) {
+export default function Game({ setState, paused, setPaused }: GameProps) {
 	const [popup, setPopup] = useState(false);
-	const [paused, setPaused] = useState(false);
 	const [positions, setPositions] = useState<number[]>(
 		new Array(5).fill(0).map((_, i) => Math.floor(Math.random() * 10) + i * 20),
 	);

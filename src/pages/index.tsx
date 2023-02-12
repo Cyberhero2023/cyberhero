@@ -9,16 +9,27 @@ const font = M_PLUS_Code_Latin({ subsets: ["latin"] });
 
 export default function Home() {
 	const [state, setState] = useState<GameStates>("menu");
+	const [paused, setPaused] = useState(false);
 
 	useEffect(() => {
 		const handleKeydown = (event: KeyboardEvent) => {
 			if (event.key === "Enter") {
 				setState("playing");
+			} else if (event.key === "Escape") {
+				setState("menu");
+			} else if (event.key === " ") {
+				setPaused(paused => !paused);
 			}
 		};
 		window.addEventListener("keydown", handleKeydown);
 		return () => window.removeEventListener("keydown", handleKeydown);
 	}, []);
+
+	useEffect(() => {
+		if (state === "playing") {
+			setPaused(false);
+		}
+	}, [state]);
 
 	return (
 		<>
@@ -44,7 +55,7 @@ export default function Home() {
 						</button>
 					</>
 				)}
-				{state === "playing" && <Game setState={setState} />}
+				{state === "playing" && <Game setState={setState} paused={paused} setPaused={setPaused} />}
 				{state === "gameover" && (
 					<>
 						<Image
