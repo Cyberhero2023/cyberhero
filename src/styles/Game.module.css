@@ -25,6 +25,11 @@
 	width: 2vw;
 }
 
+.audio {
+	background: url(/audio.svg) no-repeat center;
+	width: 2vw;
+}
+
 .home {
 	background: url(/home.svg) no-repeat center;
 	width: 2vw;
